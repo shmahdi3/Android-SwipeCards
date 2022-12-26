@@ -23,7 +23,7 @@ public class MyActivity extends Activity {
     private ArrayAdapter<String> arrayAdapter;
     private int i;
 
-    @InjectView(R.id.frame) SwipeFlingAdapterView flingContainer;
+   SwipeFlingAdapterView flingContainer;
 
 
     @Override
@@ -45,7 +45,7 @@ public class MyActivity extends Activity {
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
 
-
+        flingContainer = findViewById(R.id.frame);
         flingContainer.setAdapter(arrayAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override

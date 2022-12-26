@@ -1,15 +1,15 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'signing'
+//apply plugin: 'maven'
+//apply plugin: 'signing'
 
 android {
-    compileSdkVersion Integer.parseInt(project.TARGET_SDK_VERSION)
-    buildToolsVersion "22.0.1"
+    compileSdk 33
+    buildToolsVersion '33.0.0'
 
     defaultConfig {
-        minSdkVersion MIN_SDK_VERSION
-        targetSdkVersion project.TARGET_SDK_VERSION
-        versionCode Integer.parseInt(project.VERSION_CODE)
+        minSdk 16
+        targetSdk 33
+        versionCode 1
         versionName project.VERSION_NAME
     }
     buildTypes {
@@ -18,15 +18,19 @@ android {
             minifyEnabled false
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 
 
-
+/*
 signing {
     required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
@@ -38,7 +42,7 @@ uploadArchives {
 
     repositories.mavenDeployer {
 
-        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+       // beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
         repository(url: sonatypeRepo) {
             authentication(userName: sonatypeUsername, password: sonatypePassword )
@@ -77,3 +81,4 @@ uploadArchives {
         }
     }
 }
+*/
